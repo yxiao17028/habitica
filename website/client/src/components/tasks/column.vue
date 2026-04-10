@@ -15,6 +15,13 @@
       <h2 class="column-title">
         {{ $t(typeLabel) }}
       </h2>
+
+      <!-- add start -->
+    <button @click="showHelp = true" style="margin-left:10px;">
+      Help
+    </button>
+      <!-- add end -->
+      
       <div
         v-if="badgeCount > 0"
         class="badge badge-pill badge-purple column-badge mx-1"
@@ -38,6 +45,16 @@
         </div>
       </div>
     </div>
+
+    <!-- add start -->
+    <input
+      v-model="localTaskSearch"
+      class="column-task-search form-control form-control-sm mb-2"
+      type="text"
+      :placeholder="`Search ${$t(typeLabel)}`"
+    >
+    <!-- add end -->
+    
     <div
       ref="tasksWrapper"
       class="tasks-list"
@@ -143,6 +160,28 @@
         </draggable>
       </template>
     </div>
+  <!-- add start -->
+  <div
+      v-if="showHelp"
+      class="help-modal-overlay"
+      @click.self="showHelp = false"
+    >
+      <div class="help-modal-content">
+        <h3>Task Types Guide</h3>
+        <p><b>Habit</b>: Repeated actions that can be positive or negative.</p>
+        <p><b>Daily</b>: Recurring tasks you want to complete on a regular basis.</p>
+        <p><b>To-Do</b>: One-time tasks that should be completed once.</p>
+        <p><b>Reward</b>: Personal rewards you can buy with your in-app gold.</p>
+        <button
+          class="btn btn-primary btn-sm"
+          @click="showHelp = false"
+        >
+          Close
+        </button>
+      </div>
+    </div>
+  <!-- add end -->
+    
   </div>
 </template>
 
@@ -169,6 +208,12 @@
     min-height: 556px;
   }
 
+  /* add start */
+  .column-task-search {
+    border-radius: 4px;
+  }
+  /* add end */
+  
   .sortable-tasks {
     word-break: break-word;
   }
@@ -430,6 +475,14 @@ export default {
       quickAddRows: 1,
       showPopovers: true,
 
+      // add start
+      showHelp: false,
+      // add end
+      
+      // add start
+      localTaskSearch: '',
+      // add end
+      
       selectedItemToBuy: {},
       dragging: false,
       rerendering: false,
@@ -456,9 +509,14 @@ export default {
 
       const taggedList = this.filterByTagList(filteredTaskList, this.selectedTags);
       const searchedList = this.filterBySearchText(taggedList, this.searchText);
+      
+      // add start
+      const locallySearchedList = this.filterBySearchText(searchedList, this.localTaskSearch);
 
-      return searchedList;
+      return locallySearchedList;
     },
+    // add end
+    
     inAppRewards () {
       let watchRefresh = this.forceRefresh; // eslint-disable-line
       const rewards = inAppRewards(this.user);
