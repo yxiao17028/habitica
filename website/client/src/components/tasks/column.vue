@@ -457,10 +457,6 @@ export default {
       showPopovers: true,
 
       // add start
-      showHelp: false,
-      // add end
-      
-      // add start
       localTaskSearch: '',
       // add end
       
