@@ -17,7 +17,7 @@
       </h2>
 
       <!-- add start -->
-    <button @click="alert('Help clicked')" style="margin-left:10px;">
+   <button onclick="alert('plain html clicked')" style="margin-left:10px;">
   Help
 </button>
       <!-- add end -->
