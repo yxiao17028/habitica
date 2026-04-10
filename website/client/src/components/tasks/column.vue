@@ -162,29 +162,7 @@
           </shopItem>
         </draggable>
       </template>
-    </div>
-  <!-- add start -->
-  <div
-      v-if="showHelp"
-      class="help-modal-overlay"
-      @click.self="showHelp = false"
-    >
-      <div class="help-modal-content">
-        <h3>Task Types Guide</h3>
-        <p><b>Habit</b>: Repeated actions that can be positive or negative.</p>
-        <p><b>Daily</b>: Recurring tasks you want to complete on a regular basis.</p>
-        <p><b>To-Do</b>: One-time tasks that should be completed once.</p>
-        <p><b>Reward</b>: Personal rewards you can buy with your in-app gold.</p>
-        <button
-          class="btn btn-primary btn-sm"
-          @click="showHelp = false"
-        >
-          Close
-        </button>
-      </div>
-    </div>
-  <!-- add end -->
-    
+    </div> 
   </div>
 </template>
 
