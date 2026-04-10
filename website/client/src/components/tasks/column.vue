@@ -17,9 +17,12 @@
       </h2>
 
       <!-- add start -->
-   <button onclick="alert('plain html clicked')" style="margin-left:10px;">
-  Help
-</button>
+  <button
+    onclick="alert('Task Types Guide:\n\nHabit: Repeated actions\nDaily: Tasks you must complete regularly\nTo-Do: One-time tasks\nReward: Self-reward items')"
+    style="margin-left:10px;"
+    >
+    Help
+  </button>
       <!-- add end -->
       
       <div
