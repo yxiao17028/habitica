@@ -1,0 +1,48 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - feature/onboarding-help
+      - develop
+      - main
+  pull_request:
+    branches:
+      - develop
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    services:
+      mongo:
+        image: mongo:7.0
+        ports:
+          - 27017:27017
+        options: >-
+          --health-cmd="mongosh --eval 'db.adminCommand({ ping: 1 })'"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=10
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm install --omit=optional
+
+      - name: Run API unit tests
+        env:
+          NODE_ENV: test
+        run: npm run test:api:unit
+
+      - name: Run client unit tests
+        run: npm run client:unit
