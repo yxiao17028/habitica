@@ -108,7 +108,7 @@
     "start": "node --watch ./website/server/index.js",
     "debug": "node --watch --inspect ./website/server/index.js",
     "docker:aio": "docker compose -f docker-compose.yml up",
-    "build-auto": "npm install && npm run docker:aio"
+    "build-auto": "npm install && npm run docker:aio"，
     "docker:mongo:dev": "docker compose -f docker-compose.mongo-only.yml up",
     "docker:mongo:dev:down": "docker compose -f docker-compose.mongo-only.yml down",
     "docker:mongo:test": "docker compose -f docker-compose.mongo-test-local.yml up",
