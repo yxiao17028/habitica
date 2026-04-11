@@ -105,6 +105,7 @@
     "client:dev:docker": "cd website/client && npm run serve:docker",
     "client:build": "cd website/client && npm run build",
     "client:unit": "cd website/client && npm run test:unit",
+    "test-auto": "npm run test:api:unit && npm run client:unit",
     "start": "node --watch ./website/server/index.js",
     "debug": "node --watch --inspect ./website/server/index.js",
     "docker:aio": "docker compose -f docker-compose.yml up",
