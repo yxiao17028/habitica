@@ -15,6 +15,14 @@
       <h2 class="column-title">
         {{ $t(typeLabel) }}
       </h2>
+
+      <button
+      onclick="alert('Task Types Guide:\n\nHabit: Repeated actions\nDaily: Tasks you must complete regularly\nTo-Do: One-time tasks\nReward: Self-reward items')"
+      style="margin-left:10px;"
+      >
+      Help
+      </button>
+
       <div
         v-if="badgeCount > 0"
         class="badge badge-pill badge-purple column-badge mx-1"
@@ -38,6 +46,14 @@
         </div>
       </div>
     </div>
+
+    <input
+    v-model="localTaskSearch"
+    class="column-task-search form-control form-control-sm mb-2"
+    type="text"
+    :placeholder="`Search ${$t(typeLabel)}`"
+    >
+
     <div
       ref="tasksWrapper"
       class="tasks-list"
