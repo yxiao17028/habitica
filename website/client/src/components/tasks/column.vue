@@ -430,6 +430,8 @@ export default {
       quickAddRows: 1,
       showPopovers: true,
 
+      localTaskSearch: '',
+
       selectedItemToBuy: {},
       dragging: false,
       rerendering: false,
@@ -457,8 +459,10 @@ export default {
       const taggedList = this.filterByTagList(filteredTaskList, this.selectedTags);
       const searchedList = this.filterBySearchText(taggedList, this.searchText);
 
-      return searchedList;
+      const locallySearchedList = this.filterBySearchText(searchedList, this.localTaskSearch);
+      return locallySearchedList;   
     },
+
     inAppRewards () {
       let watchRefresh = this.forceRefresh; // eslint-disable-line
       const rewards = inAppRewards(this.user);
