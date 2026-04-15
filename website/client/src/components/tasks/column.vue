@@ -460,8 +460,7 @@ export default {
       const searchedList = this.filterBySearchText(taggedList, this.searchText);
 
       const locallySearchedList = this.filterBySearchText(searchedList, this.localTaskSearch);
-      
-      return locallySearchedList;    
+      return locallySearchedList;   
     },
 
     inAppRewards () {
