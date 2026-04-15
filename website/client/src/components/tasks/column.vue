@@ -38,6 +38,14 @@
         </div>
       </div>
     </div>
+    
+    <input 
+    v-model="localTaskSearch"
+    class="column-task-search form-control form-control-sm mb-2"
+    type="text"
+    :placeholder="`Search ${$t(typeLabel)}`"
+    >
+    
     <div
       ref="tasksWrapper"
       class="tasks-list"
@@ -167,6 +175,10 @@
 
   .tasks-column {
     min-height: 556px;
+  }
+
+  .column-task-search {
+    border-radius: 4px;
   }
 
   .sortable-tasks {
