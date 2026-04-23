@@ -15,6 +15,16 @@
       <h2 class="column-title">
         {{ $t(typeLabel) }}
       </h2>
+
+      <!-- add start -->
+  <button
+    onclick="alert('Task Types Guide:\n\nHabit: Repeated actions\nDaily: Tasks you must complete regularly\nTo-Do: One-time tasks\nReward: Self-reward items')"
+    style="margin-left:10px;"
+    >
+    Help
+  </button>
+      <!-- add end -->
+      
       <div
         v-if="badgeCount > 0"
         class="badge badge-pill badge-purple column-badge mx-1"
@@ -38,6 +48,16 @@
         </div>
       </div>
     </div>
+
+    <!-- add start -->
+    <input
+      v-model="localTaskSearch"
+      class="column-task-search form-control form-control-sm mb-2"
+      type="text"
+      :placeholder="`Search ${$t(typeLabel)}`"
+    >
+    <!-- add end -->
+    
     <div
       ref="tasksWrapper"
       class="tasks-list"
@@ -142,7 +162,7 @@
           </shopItem>
         </draggable>
       </template>
-    </div>
+    </div> 
   </div>
 </template>
 
@@ -169,6 +189,12 @@
     min-height: 556px;
   }
 
+  /* add start */
+  .column-task-search {
+    border-radius: 4px;
+  }
+  /* add end */
+  
   .sortable-tasks {
     word-break: break-word;
   }
@@ -430,6 +456,10 @@ export default {
       quickAddRows: 1,
       showPopovers: true,
 
+      // add start
+      localTaskSearch: '',
+      // add end
+      
       selectedItemToBuy: {},
       dragging: false,
       rerendering: false,
@@ -456,9 +486,14 @@ export default {
 
       const taggedList = this.filterByTagList(filteredTaskList, this.selectedTags);
       const searchedList = this.filterBySearchText(taggedList, this.searchText);
+      
+      // add start
+      const locallySearchedList = this.filterBySearchText(searchedList, this.localTaskSearch);
 
-      return searchedList;
+      return locallySearchedList;
     },
+    // add end
+    
     inAppRewards () {
       let watchRefresh = this.forceRefresh; // eslint-disable-line
       const rewards = inAppRewards(this.user);
